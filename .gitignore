@@ -5,7 +5,9 @@ out/
 .class
 Thumbs.db
 lib/
+*.xml
 
+.mvn/
 target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
