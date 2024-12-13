@@ -1,0 +1,198 @@
+@startuml
+interface Sujet {
+    +ajouterObservateur(observateur: Observateur)
+    +supprimerObservateur(observateur: Observateur)
+    +notifierObservateurs()
+}
+
+interface Observateur {
+    +actualiser(Sujet)
+}
+
+class ModeleDiagramme implements Sujet {
+    +ajouterObservateur()
+    +supprimerObservateur()
+    +notifierObservateurs()
+    +inspecterClasse(nom: String): ClasseEntiere
+}
+
+
+
+class ClasseEntiere{
+}
+
+class Attribut {
+    +nom: String
+    +type: String
+    +visibilite: String
+}
+
+class Methode {
+    +nom: String
+    +typeRetour: String
+    +visibilite: String
+}
+
+class Relation {
+    +source: ClasseEntiere
+    +cible: ClasseEntiere
+    +type: String
+    +cardinaliteSource: String
+    +cardinaliteCible: String
+}
+
+abstract Fleche {
+    +source: ClasseEntiere
+    +cible: ClasseEntiere
+    +typeRelation: String
+}
+
+class FlecheAssociation extends Fleche {
+    -cardinaliteDebut: String
+    -cardinaliteFin: String
+}
+
+class FlecheHeritage extends Fleche {
+}
+
+class FlecheImplementation extends Fleche {
+}
+
+abstract FabriqueFleche {
+    +FabriqueFleche()
+    +fabriquer(): Fleche
+}
+
+class FabriqueFlecheAssociation extends FabriqueFleche implements FlecheAssociation{
+    +FabriqueFlecheAssociation()
+    +fabriquer(): Fleche
+}
+
+class FabriqueFlecheHeritage extends FabriqueFleche implements FlecheHeritage{
+    +FabriqueFlecheHeritage()
+    +fabriquer(): Fleche
+}
+
+class FabriqueFlecheImplementation extends FabriqueFleche implements FlecheImplementation {
+    +FabriqueFlecheImplementation()
+    +fabriquer(): Fleche
+}
+
+
+class VueDiagramme implements Observateur {
+}
+
+class VueArborescence implements Observateur {
+}
+
+class VueFleche implements Observateur {
+}
+
+class VueBouton implements Observateur {
+}
+
+class ControleurBouton {
+    +ControleurBouton(ModeleDiagramme)
+    +handle(ActionEvent)
+}
+
+
+class ControleurDeplacement {
+    +ControleurDeplacerClasse(ModeleDiagramme)
+    +handle(DragEvent)
+}
+
+class ControleurSouris {
+    +ControleurDeplacerClasse(ModeleDiagramme)
+    +handle(MouseEvent)
+}
+
+class ControleurClavier {
+    +ControleurDeplacerClasse(ModeleDiagramme)
+    +handle(KeyEvent)
+}
+
+
+interface Visibilite {
+  +getVisibilite(): String
+}
+
+class Protected implements Visibilite{
+  +getVisibilite(): String
+}
+
+class Private implements Visibilite{
+  +getVisibilite(): String
+}
+
+class Public implements Visibilite{
+  +getVisibilite(): String
+}
+
+interface Type {
+  +getType(): String
+}
+
+class Classe implements Type{
+  +getType(): String
+}
+
+class Interface implements Type {
+  +getType(): String
+}
+
+
+interface Statut {
+  +getStatus(): String
+}
+
+class Abstract implements Statut {
+  +getStatut(): String
+}
+
+class Static implements Statut {
+  +getStatut(): String
+}
+
+class Final implements Statut {
+  +getStatut(): String
+}
+
+class Arborescence {
+}
+
+class ClasseComposite extends Arborescence{
+  
+}
+
+
+ModeleDiagramme --> Observateur : -observateurs
+ModeleDiagramme "1" --> "*" Relation : - relations
+
+ControleurDeplacement  --> "0..1" ModeleDiagramme : - modele
+ControleurBouton -->"0..1" ModeleDiagramme : - modele
+ControleurSouris --> "0..1" ModeleDiagramme : - modele
+ControleurClavier --> "0..1" ModeleDiagramme : - modele
+
+
+ClasseEntiere "1" --> "*" Attribut : "contient"
+ClasseEntiere "1" --> "*" Methode : "contient"
+
+Methode --> Attribut : parametres
+
+Relation "1" --> "1" Fleche : fleches
+Relation "*" --> "*" ClasseEntiere
+
+Attribut "1" --> "1" Visibilite : visibilite
+Methode "1" --> "1" Visibilite : visibilite
+ClasseEntiere "1" --> "0..1" Type
+ClasseEntiere "1" --> "0..*" Statut
+Attribut "1" --> "*" Statut
+Methode "1" --> "*" Statut
+
+ModeleDiagramme   "1" --> "*" ClasseEntiere
+ModeleDiagramme "1" --> "1" Arborescence
+ClasseComposite "*" --> "1" Arborescence
+Arborescence "1" --> "*" ClasseEntiere
+
+@enduml
