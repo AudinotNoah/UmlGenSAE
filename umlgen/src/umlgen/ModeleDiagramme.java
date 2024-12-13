@@ -1,6 +1,6 @@
 
 package umlgen;
-import umlgen.Sujet;
+import umlgen.vue.Observateur;
 
 import java.util.ArrayList;
 

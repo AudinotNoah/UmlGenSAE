@@ -5,4 +5,6 @@ module org.example.umlgen {
 
     opens umlgen to javafx.controls;
     exports umlgen;
+    exports umlgen.vue;
+    opens umlgen.vue to javafx.controls;
 }
