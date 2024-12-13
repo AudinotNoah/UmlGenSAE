@@ -6,7 +6,6 @@ import umlgen.controleur.ControleurBouton;
 import umlgen.controleur.ControleurClavier;
 import umlgen.controleur.ControleurDeplacement;
 import umlgen.controleur.ControleurSouris;
-import umlgen.vue.VueArborescence;
 import umlgen.vue.VueBouton;
 import umlgen.vue.VueDiagramme;
 import umlgen.vue.VueFleche;
@@ -24,7 +23,6 @@ public class Principale extends Application {
         VueBouton vuebouton;
         VueDiagramme vuediagramme;
         VueFleche vuefleche;
-        VueArborescence vuearborescence;
 
 
         modele = new ModeleDiagramme();
