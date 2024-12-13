@@ -1,4 +1,4 @@
-package umlgen;
+package umlgen.test;
 
 import java.io.File;
 import java.lang.reflect.Method;

@@ -1,4 +1,4 @@
-package umlgen;
+package umlgen.test;
 
 import javafx.application.Application;
 import javafx.event.ActionEvent;
