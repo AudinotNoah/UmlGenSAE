@@ -7,6 +7,8 @@ public abstract class Test {
     private int age;
     private List<String> tags;
 
+    private final static String pourtest = null;
+
     public Test() {
     }
 

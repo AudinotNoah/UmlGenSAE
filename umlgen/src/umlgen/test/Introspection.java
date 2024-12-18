@@ -51,59 +51,24 @@ public class Introspection {
                 Methode m =  new Methode(method.getName(),getVisibility(modifiers),getStatus(modifiers), method.getReturnType(),parasMethode);
                 methodes.add(m);
             }
+            Field[] fields = classe.getDeclaredFields();
+            for (Field field : fields) {
+                int modifiers = field.getModifiers();
+
+                Attribut attribut = new Attribut(
+                        field.getName(),
+                        getVisibility(modifiers),
+                        getStatus(modifiers),
+                        field.getType()
+                );
+                attributs.add(attribut);
+            }
+
+
             ClasseEntiere c = new ClasseEntiere(classe.getName(),getVisibility(classModifiers),typeClasse,methodes,attributs,getStatus(classModifiers));
             System.out.println(c.toString());
 
 
-//
-//            // Créer un attribut avec un nom, visibilite, status et un type (ex. String)
-//            Attribut attribut1 = new Attribut("attribut1", visibilite, statusList, String.class);
-//            attributs.add(attribut1);
-//
-//            // Créer une méthode
-//            ArrayList<Attribut> params = new ArrayList<>();
-//            params.add(new Attribut("param1", Integer.class));
-//            Methode methode1 = new Methode("methode1", String.class, params);
-//            methodes.add(methode1);
-//
-//            // Créer l'objet ClasseEntiere avec des attributs et des méthodes
-//            ClasseEntiere classeEntiere = new ClasseEntiere("TestClass", new Public(), methodes, attributs);
-//
-//            // Afficher les attributs de ClasseEntiere
-//            Field[] fields = classeEntiere.getClass().getDeclaredFields();
-//            System.out.println("\nAttributs de ClasseEntiere :");
-//            for (Field field : fields) {
-//                System.out.println("Attribut : " + field.getName() + " | Type : " + field.getType().getName());
-//            }
-//
-//            // Afficher les méthodes de ClasseEntiere
-//            Method[] methods = classeEntiere.getClass().getDeclaredMethods();
-//            System.out.println("\nMéthodes de ClasseEntiere :");
-//            for (Method method : methods) {
-//                System.out.println("Méthode : " + method.getName() + " | Retour : " + method.getReturnType().getName());
-//            }
-//
-//
-//            // Créer et inspecter un objet de la classe Attribut
-//            if (classe.getSimpleName().equals("Attribut")) {
-//                // Créer un objet Visibilite
-//                Visibilite visibilite = new Public();
-//                ArrayList<Status> statusList = new ArrayList<>();
-//                // Créer un attribut avec un nom, visibilite, status et un type
-//                Attribut attribut = new Attribut("attribut1", visibilite, statusList, String.class);
-//                System.out.println("\nAttribut : " + attribut.getNom() + " | Type : " + attribut.getType());
-//            }
-//
-//            // Créer et inspecter un objet de la classe Methode
-//            if (classe.getSimpleName().equals("Methode")) {
-//                ArrayList<Attribut> params = new ArrayList<>();
-//                params.add(new Attribut("param1", Integer.class));
-//                Methode methode = new Methode("methode1", String.class, params);
-//                System.out.println("\nMéthode : " + methode.getNom() + " | Type Retour : " + methode.getTypeRetour());
-//                for (Attribut param : methode.getParametres()) {
-//                    System.out.println("Paramètre : " + param.getNom() + " | Type : " + param.getType());
-//                }
-//            }
 
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
