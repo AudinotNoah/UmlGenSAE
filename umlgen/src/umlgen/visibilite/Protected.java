@@ -5,4 +5,9 @@ public class Protected implements Visibilite{
     public String getVisibilite() {
         return null;
     }
+
+    @Override
+    public String toString() {
+        return "Protected";
+    }
 }

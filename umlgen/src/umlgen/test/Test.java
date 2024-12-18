@@ -2,7 +2,7 @@ package umlgen.test;
 
 import java.util.List;
 
-public class Test {
+public abstract class Test {
     private String name;
     private int age;
     private List<String> tags;

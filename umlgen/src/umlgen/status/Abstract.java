@@ -5,4 +5,9 @@ public class Abstract implements Status{
     public String getStatus() {
         return null;
     }
+
+    @Override
+    public String toString() {
+        return "Abstract";
+    }
 }

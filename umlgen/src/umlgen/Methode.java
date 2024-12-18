@@ -49,4 +49,39 @@ public class Methode {
     public ArrayList<Attribut> getParametres() {
         return parametres;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Methode{")
+                .append("nom='").append(nom).append('\'')
+                .append(", visi=").append(visi.getClass().getSimpleName())
+                .append(", status=[");
+
+        for (Status s : status) {
+            sb.append(s.toString()).append(", ");
+        }
+
+        // Retirer la dernière virgule et espace si nécessaire
+        if (!status.isEmpty()) {
+            sb.setLength(sb.length() - 2);
+        }
+
+        sb.append("], typeRetour=")
+                .append(typeRetour instanceof Class ? ((Class<?>) typeRetour).getSimpleName() : typeRetour)
+                .append(", parametres=[");
+
+        for (Attribut param : parametres) {
+            sb.append(param.toString()).append(", ");
+        }
+
+        // Retirer la dernière virgule et espace si nécessaire
+        if (!parametres.isEmpty()) {
+            sb.setLength(sb.length() - 2);
+        }
+
+        sb.append("]}");
+        return sb.toString();
+    }
+
 }

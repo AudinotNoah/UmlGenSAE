@@ -5,4 +5,9 @@ public class Classe implements Type{
     public String getType() {
         return null;
     }
+
+    @Override
+    public String toString() {
+        return "Classe";
+    }
 }

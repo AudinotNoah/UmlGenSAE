@@ -42,4 +42,27 @@ public class Attribut {
     public Object getType() {
         return type;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Attribut{")
+                .append("nom='").append(nom).append('\'')
+                .append(", visi=").append(visi.getClass().getSimpleName())
+                .append(", status=[");
+
+        for (Status s : status) {
+            sb.append(s.toString()).append(", ");
+        }
+
+        // Retirer la dernière virgule et espace si nécessaire
+        if (!status.isEmpty()) {
+            sb.setLength(sb.length() - 2);
+        }
+
+        sb.append("], type=").append(type instanceof Class ? ((Class<?>) type).getSimpleName() : type)
+                .append('}');
+        return sb.toString();
+    }
+
 }

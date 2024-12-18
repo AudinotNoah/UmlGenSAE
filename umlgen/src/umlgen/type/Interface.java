@@ -5,4 +5,9 @@ public class Interface implements Type{
     public String getType() {
         return null;
     }
+
+    @Override
+    public String toString() {
+        return "Interface";
+    }
 }

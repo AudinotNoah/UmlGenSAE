@@ -5,4 +5,9 @@ public class Static implements Status{
     public String getStatus() {
         return null;
     }
+
+    @Override
+    public String toString() {
+        return "Static";
+    }
 }

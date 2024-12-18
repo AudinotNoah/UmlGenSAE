@@ -24,18 +24,15 @@ public class Introspection {
             ArrayList<Methode> methodes = new ArrayList<>();
             ArrayList<Attribut> attributs = new ArrayList<>();
 
-            umlgen.type.Type t;
+            umlgen.type.Type typeClasse;
             if (classe.isInterface()) {
-                t = new Interface();
+                typeClasse = new Interface();
             } else if (classe.isEnum()) {
-                t = new Enum();
+                typeClasse = new Enum();
             } else {
-               t = new Classe();
+                typeClasse = new Classe();
             }
             int classModifiers = classe.getModifiers();
-
-            getStatus(classModifiers);
-//            ClasseEntiere c = new ClasseEntiere(classe.getName(),getVisibility(classModifiers),t,)
 
             Method[] methods = classe.getDeclaredMethods();
             for (Method method : methods) {
@@ -54,6 +51,9 @@ public class Introspection {
                 Methode m =  new Methode(method.getName(),getVisibility(modifiers),getStatus(modifiers), method.getReturnType(),parasMethode);
                 methodes.add(m);
             }
+            ClasseEntiere c = new ClasseEntiere(classe.getName(),getVisibility(classModifiers),typeClasse,methodes,attributs,getStatus(classModifiers));
+            System.out.println(c.toString());
+
 
 //
 //            // Créer un attribut avec un nom, visibilite, status et un type (ex. String)

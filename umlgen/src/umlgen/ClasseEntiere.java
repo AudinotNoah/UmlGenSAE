@@ -54,4 +54,47 @@ public class ClasseEntiere {
     public ArrayList<Attribut> getAttributs() {
         return attributs;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("ClasseEntiere{")
+                .append("nom='").append(nom).append('\'')
+                .append(", visi=").append(visi.getClass().getSimpleName())
+                .append(", typeClasse=").append(typeClasse.getClass().getSimpleName())
+                .append(", status=[");
+
+        for (Status s : status) {
+            sb.append(s.toString()).append(", ");
+        }
+
+        // Retirer la dernière virgule et espace si nécessaire
+        if (!status.isEmpty()) {
+            sb.setLength(sb.length() - 2);
+        }
+
+        sb.append("], attributs=[");
+
+        for (Attribut attr : attributs) {
+            sb.append(attr.toString()).append(", ");
+        }
+
+        if (!attributs.isEmpty()) {
+            sb.setLength(sb.length() - 2);
+        }
+
+        sb.append("], methodes=[");
+
+        for (Methode method : methodes) {
+            sb.append(method.toString()).append(", ");
+        }
+
+        if (!methodes.isEmpty()) {
+            sb.setLength(sb.length() - 2);
+        }
+
+        sb.append("]}");
+        return sb.toString();
+    }
+
 }
