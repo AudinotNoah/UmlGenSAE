@@ -1,6 +1,8 @@
 
 *.iml
 out/
+target/
 .idea/
+.mvn/
 *.DS_Store
 Thumbs.db
