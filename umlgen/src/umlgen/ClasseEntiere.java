@@ -1,5 +1,6 @@
 package umlgen;
 
+import umlgen.status.Status;
 import umlgen.type.Classe;
 import umlgen.type.Type;
 import umlgen.visibilite.Public;
@@ -14,13 +15,15 @@ public class ClasseEntiere {
     private Type typeClasse;
     private ArrayList<Methode> methodes;
     private ArrayList<Attribut> attributs;
+    private ArrayList<Status> status;
 
-    public ClasseEntiere(String pnom, Visibilite pvisi, Type ptypeClasse, ArrayList<Methode> pmethodes, ArrayList<Attribut> pattributs) {
+    public ClasseEntiere(String pnom, Visibilite pvisi, Type ptypeClasse, ArrayList<Methode> pmethodes, ArrayList<Attribut> pattributs,ArrayList<Status> pstatus) {
         this.nom = pnom;
         this.visi = pvisi;
         this.typeClasse = ptypeClasse;
         this.methodes = pmethodes;
         this.attributs = pattributs;
+        this.status = pstatus;
     }
 
     public ClasseEntiere(String pnom) {
@@ -29,6 +32,7 @@ public class ClasseEntiere {
         this.typeClasse = new Classe();
         this.methodes = new ArrayList<>();
         this.attributs = new ArrayList<>();
+        this.status = new ArrayList<>();
     }
 
     public String getNom() {
